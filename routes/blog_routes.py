@@ -1,8 +1,14 @@
+from tokenize import Comment
 from fastapi import APIRouter
 from config.database import collections_post
+from models.blog_models import Blog
+from models.blog_models import Comment
+from schemas.blog_schemas import blog_serializer,blogs_serializer,comment_serializer,comments_serializer
+from bson import ObjectId
 from models.blog_models import Blog,Comment
 from schemas.blog_schemas import blog_serializer,blogs_serializer,comment_serializer,comments_serializer
 from bson import ObjectId, objectid
+
 
 
 blog_api_router = APIRouter()
@@ -34,7 +40,7 @@ async def update_post(id: str, blog: Blog):
     return {"status": "ok", "data": blog}
 
 @blog_api_router.delete("/{id}")
-async def update_post(id: str):
+async def delete_post(id: str):
     collections_post.find_one_and_delete({"_id": ObjectId(id)}, {
     })
     return {"status": "ok", "data": []}

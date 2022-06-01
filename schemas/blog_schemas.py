@@ -2,6 +2,7 @@ def blog_serializer(blog) -> dict:
      return{
          "id": str(blog["_id"]),
          "author": blog["author"],
+         "title": blog["title"],
          "content": blog["content"]
      }
 

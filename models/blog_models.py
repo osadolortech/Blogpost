@@ -9,3 +9,6 @@ class Comment(BaseModel):
     content: str
    
 
+class Comment(BaseModel):
+    content: str
+
